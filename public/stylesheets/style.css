@@ -6,65 +6,56 @@
 }    
 
 
-.form-register {
-  width: 400px;
-  background: #24303c;
-  padding: 30px;
-  margin: auto;
-  border-radius: 4px;
-  font-family: 'calibri';
-  color: white;
+
+form {
+  border-radius: 20px;
+  text-align: center;
+  width: 540px;
 }
 
-.form-register2 {
-  width: 400px;
-  background: #24303c;
-  padding: 30px;
-  margin: auto; 
-  border-radius: 4px;
-  font-family: 'calibri';
-  color: white;
+.input-group{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
-.form-register h4 {
-  font-size: 22px;
-  margin-bottom: 20px;
+
+
+label{
+  color: #283629;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
-.controls {
-  width: 100%;
-  background: #24303c;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 16px;
-  border: 1px solid #1f53c5;
-  font-family: 'calibri';
-  font-size: 18px;
-  color: white;
+
+.form-txt {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
 }
 
-.form-register .botons {
-  width: 100%;
-  background: #1f53c5;
-  border: none;
-  padding: 12px;
-  color: white;
-  margin: 16px 0;
+.form-txt a {
+  color: #76b28e;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.g-recaptcha {
   font-size: 16px;
+  color: #ffffff;
+  border: 0;
+  border-radius: 25px;
+  background-color: #f5a803;
+  
+  cursor: pointer;
 }
 
-.form-register2 .botons {
-  width: 100%;
-  background: #1f53c5;
-  border: none;
-  padding: 12px;
-  color: white;
-  margin: 16px 0;
-  font-size: 16px;
+.g-recaptcha:hover{
+  background: #76b28e;
 }
-
-
-
 
 @media (max-width:991px) {
   body {
@@ -80,7 +71,50 @@
 }
 
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
 
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f5a803;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+ .p{
+  border-radius: 20px;
+  text-align: center;
+  width: 540px;
+  background-color: rgb(198, 195, 195);
+  padding: 15px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.submit {
+  font-size: 16px;
+  color: #ffffff;
+  border: 0;
+  border-radius: 25px;
+  background-color: rgb(6, 6, 6);
+  
+  cursor: pointer;
+}
 
 
 

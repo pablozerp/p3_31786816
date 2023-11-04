@@ -1,7 +1,9 @@
 <%- include('template/cabezera.ejs')  %>
 
-<form action="/admin/agregar" method="post">
-    <section class="form-register2">
+
+
+<form action="/admin/agregar" method="post" id="contact-form">
+    <div class="input-group">
         <h4>formularios</h4>
         <label for="name">nombre</label>
         <input class="controls" type="text" name="name" id="name" placeholder="ingrese el nombre del producto">
@@ -13,8 +15,8 @@
         <input class="controls" type="text" name="description" id="description" placeholder="ingrese el descripcion del producto">
         <label for="id">id</label>
         <input class="controls" type="id" name="id" id="id" placeholder="ingrese su id">
-        <input class="botons" type="submit" >
-    </section>  
+        <input class="g-recaptcha" type="submit" >
+    </div>  
     </form>
   
     

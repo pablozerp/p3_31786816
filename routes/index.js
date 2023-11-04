@@ -8,9 +8,9 @@ var router = express.Router();
 require('dotenv').config()
 
 router.get('/', function(req, res, next) {
-  db.insert('Product 1', 123, 9.99, 'Description of product 1', 1);
-  db.insertCategoria("Product 1", 123, 9.99, "Description of product 1", 1);
-  db.insertImagen(1, "a", 1);
+  db.insert('camisa', 2, 23, 'camisa de bebe', 1);
+  db.insertCategoria("camisa",  1);
+  db.insertImagen(1, "url", 1);
   res.render('index', { title: 'pablo Zerpa,31786816, seccion 2' });
   
 });
