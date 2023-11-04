@@ -158,7 +158,9 @@ table {
   font-size: 0.9rem;
   text-align: left;
   border: 1px solid #dee2e6;
+  font-family: Arial, sans-serif;
 }
+
 
 th,
 td {
@@ -168,13 +170,17 @@ td {
 }
 
 th {
-  background-color: #f8f9fa;
-  border-color: #dee2e6;
+  background-color: #f5a803;
+  color: white;
 }
 
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-
-
+tr:hover {
+  background-color: #ddd;
+}
 
 
 
