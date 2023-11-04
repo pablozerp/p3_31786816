@@ -1,0 +1,101 @@
+<%- include('template/cabezera.ejs')  %>
+<body>
+  
+
+
+  
+
+
+      
+
+  <h1 class="l">lista de productos</h1>
+
+  <h2>productos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>codigo</th>
+        <th>precio</th>
+        <th>descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i=0; i<productos.length; i++) { %>
+        <tr>
+          <td><%= productos[i].id %></td>
+          <td><%= productos[i].name %></td>
+          <td><%= productos[i].code %></td>
+          <td><%= productos[i].price %></td>
+          <td><%= productos[i].description %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <br>
+
+  <h1 class="l">lista de categoria</h1>
+  <h2>Categorías</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i=0; i<categorias.length; i++) { %>
+        <tr>
+          <td><%= categorias[i].idCategoria %></td>
+          <td><%= categorias[i].nameCategoria %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <br>
+  
+  <h1 class="l">lista de imagenes</h1>
+  <h2>Imágenes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>producto_id</th>
+        <th>url</th>
+        <th>destacado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i=0; i<imagenes.length; i++) { %>
+        <tr>
+          <td><%= imagenes[i].id %></td>
+          <td><%= imagenes[i].producto_id %></td>
+          <td><%= imagenes[i].url %></td>
+          <td><%= imagenes[i].destacado %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+
+  <form action="/admin/agregar" method="get">
+    <button type="submit">agregar producto</button>
+  </form>
+  <form action="/admin/agregarCategoria" method="get">
+    <button type="submit">agregar categoria</button>
+  </form>
+  <form action="/admin/agregarImagenes" method="get">
+    <button type="submit">agregar imagen</button>
+  </form>
+  <form action="/admin/actualizar" method="get">
+    <button type="submit">editar producto</button>
+  </form>
+  <form action="/admin/actualizarCat" method="get">
+    <button type="submit">editar categoria</button>
+  </form>
+  
+
+
+</body>
+
