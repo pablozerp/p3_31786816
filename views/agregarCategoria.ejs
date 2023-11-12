@@ -1,11 +1,11 @@
 <%- include('template/cabezera.ejs')  %>
 <form action="/admin/agregarCategoria" method="post"id="contact-form">
  <div class="input-group">
-        <h4>form</h4>
+        <h4>agregar</h4>
+        <br>
         <label for="nameCategoria">nameCategoria</label>
-      <input class="controls" type="text" name="nameCategoria" id="nameCategoria" placeholder="ingrese el descripcion del nameCategoria">
-
-      
-      <input class="g-recaptcha" type="submit" >
+        <input class="controls" type="text" name="nameCategoria" id="nameCategoria" required>
+        <br>
+        <input class="g-recaptcha" type="submit" >
     </div>
     </form>

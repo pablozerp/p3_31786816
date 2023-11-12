@@ -7,7 +7,9 @@ let db = new sqlite3.Database(':memory:', (err) => {
     console.log('Connected to the in-memory SQlite database.');
 
     db.run("CREATE TABLE IF NOT EXISTS categoria (idCategoria INTEGER PRIMARY KEY AUTOINCREMENT, nameCategoria TEXT NOT NULL)");
-    db.run("CREATE TABLE IF NOT EXISTS productos (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, code INTEGER NOT NULL, price REAL NOT NULL, description TEXT NOT NULL, categoria_id INTEGER, FOREIGN KEY(categoria_id) REFERENCES categoria(id))");
+
+
+    db.run( "CREATE TABLE IF NOT EXISTS productos (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, code TEXT NOT NULL, price REAL NOT NULL, description TEXT NOT NULL,brand TEXT NOT NULL, size TEXT NOT NULL, categoria_id INTEGER, FOREIGN KEY(categoria_id) REFERENCES categoria(id))");
     
     db.run("CREATE TABLE IF NOT EXISTS imagenes (id INTEGER PRIMARY KEY AUTOINCREMENT, producto_id INTEGER, url TEXT NOT NULL, destacado INTEGER NOT NULL, FOREIGN KEY(producto_id) REFERENCES productos(id))");
 
@@ -17,10 +19,10 @@ let db = new sqlite3.Database(':memory:', (err) => {
 });
 
 
-
+ "CREATE TABLE IF NOT EXISTS productos (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, code TEXT NOT NULL, price REAL NOT NULL, description TEXT NOT NULL,brand TEXT NOT NULL, size TEXT NOT NULL, categoria_id INTEGER, FOREIGN KEY(categoria_id) REFERENCES categoria(id))"
 module.exports = {
-    insert: function (name, code, price, description) {
-        db.run("INSERT INTO productos (name, code, price, description) VALUES (?, ?, ?, ?)", [name, code, price, description], function (err) {
+    insert: function (name, code, price, description, brand, size, categoria_id) {
+        db.run("INSERT INTO productos (name, code, price, description, brand, size, categoria_id) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, code, price, description, brand, size, categoria_id], function (err) {
             if (err) {
                 return console.log(err.message);
             }
@@ -60,7 +62,22 @@ module.exports = {
           }
           callback(rows);
         });
-      },
+      },selectCategoria2: function (idCategoria, callback) {
+        db.all("SELECT * FROM categoria WHERE idCategoria = ?", [idCategoria], (err, rows) => {
+            if (err) {
+                throw err;
+            }
+            callback(rows);
+        });
+    },
+    select2: function (id, callback) {
+      db.all("SELECT * FROM productos WHERE id = ?", [id], (err, rows) => {
+          if (err) {
+              throw err;
+          }
+          callback(rows);
+      });
+  },
       selectImagen: function (callback) {
         db.all("SELECT * FROM imagenes", [], (err, rows) => {
           if (err) {
@@ -77,8 +94,8 @@ module.exports = {
             console.log(`Row(s) updated: ${this.changes}`);
         });
     },
-    update: function (id, name, code, price, description) {
-        db.run("UPDATE productos SET name = ?, code = ?, price = ?, description = ? WHERE id = ?", [ name, code, price, description, id], function (err) {
+    update: function (id, name, code, price, description, brand, size, categoria_id) {
+        db.run("UPDATE productos SET name = ?, code = ?, price = ?, description = ?, brand = ?, size = ?, categoria_id = ?  WHERE id = ?", [ name, code, price, description, brand, size,categoria_id, id], function (err) {
             if (err) {
                 return console.log(err.message);
             }

@@ -5,14 +5,37 @@
 <form action="/admin/agregar" method="post" id="contact-form">
     <div class="input-group">
         <h4>formularios</h4>
+        <br>
         <label for="name">nombre</label>
-        <input class="controls" type="text" name="name" id="name" placeholder="ingrese el nombre del producto">
+        <input class="controls" type="text" name="name" id="name" required>
+        <br>
         <label for="code">codigo</label>
-        <input class="controls" type="text" name="code" id="code" placeholder="ingrese el codigo del producto">
+        <input class="controls" type="text" name="code" id="code" required>
+        <br>
         <label for="price">precio</label>
-        <input class="controls" type="text" name="price" id="price" placeholder="ingrese el precio del producto">
+        <input class="controls" type="text" name="price" id="price" required>
+        <br>
         <label for="description">descripcion</label>
-        <input class="controls" type="text" name="description" id="description" placeholder="ingrese el descripcion del producto">
+        <input class="controls" type="text" name="description" id="description" required>
+        <br> 
+        <label for="brand">marca</label>
+        <input class="controls" type="text" name="brand" id="brand" required>
+        <br>
+        <label for="size">talla</label>
+        <input class="controls" type="text" name="size" id="size" required>
+        <br>
+
+
+        <br>
+        <label for="categoria_id">Categoría:</label>
+        <select id="categoria_id" name="categoria_id" class="controls" required>
+        <% for (var i=0; i<categorias.length; i++) { %>   
+        <option value="<%= categorias[i].idCategoria %>"><%= categorias[i].nameCategoria %></option>
+        <% } %>
+        </select>
+        <br>
+
+
         <input class="g-recaptcha" type="submit" >
     </div>
     </form>

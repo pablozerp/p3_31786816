@@ -1,0 +1,40 @@
+<%- include('template/cabezera.ejs')  %>
+<body>
+  <br>
+  <div class="button-container">
+    <form action="/admin" method="get">
+      <button type="submit" class="add">lista de productos</button>
+    </form>
+    <form action="/categoria" method="get">
+      <button type="submit" class="list">lista de categoria</button>
+    </form>
+  </div>
+<br>
+<h1 class="l">lista de imagenes</h1>
+<br>
+  <h2>Imágenes</h2>
+  <br>
+  <form action="/admin/agregarImagenes" method="get">
+    <button type="submit" class="add">agregar imagen</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>producto_id</th>
+        <th>url</th>
+        <th>destacado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i=0; i<imagenes.length; i++) { %>
+        <tr>
+          <td><%= imagenes[i].id %></td>
+          <td><%= imagenes[i].producto_id %></td>
+          <td><%= imagenes[i].url %></td>
+          <td><%= imagenes[i].destacado %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
