@@ -3,7 +3,7 @@
   <br>
   <div class="button-container">
     <form action="/imagenes" method="get">
-      <button type="submit" class="add">lista de imágenes</button>
+      <button type="submit" class="list">lista de imágenes</button>
     </form>
     <form action="/categoria" method="get">
       <button type="submit" class="list">lista de categoría</button>
@@ -15,39 +15,44 @@
   <h2>productos</h2>
   <br>
   <form action="/admin/agregar" method="get">
-    <button type="submit" class="add">agregar producto</button>
+    <button type="submit" class="list">agregar producto</button>
   </form>
   <br>
-  <table>
+  <table class="u">
     <thead>
       <tr>
-        <th>id</th>
-        <th>Nombre</th>
-        <th>codigo</th>
-        <th>precio</th>
-        <th>descripcion</th>
-        <th>editar</th>
-        <th>marca</th>
-        <th>talla</th>
+        <th class="o">id</th>
+        <th class="o"class="o">Nombre</th>
+        <th class="o">codigo</th>
+        <th class="o">precio</th>
+        <th class="o">descripcion</th>
+        <th class="o">marca</th>
+        <th class="o">grados alcohol</th>
+        <th class="o">categoria_id</th>
+        <th class="o">editar</th>
+        <th class="o">borrar</th>
       </tr>
     </thead>
     <tbody>
       <% for (var i=0; i<productos.length; i++) { %>
         <tr>
-          <td><%= productos[i].id %></td>
-          <td><%= productos[i].name %></td>
-          <td><%= productos[i].code %></td>
-          <td><%= productos[i].price %></td>
-          <td><%= productos[i].description %></td> 
-          <td><%= productos[i].brand %></td>
-          <td><%= productos[i].size %></td>
+          <td class="i"><%= productos[i].id %></td>
+          <td class="i"><%= productos[i].name %></td>
+          <td class="i"><%= productos[i].code %></td>
+          <td class="i"><%= productos[i].price %></td>
+          <td class="i"><%= productos[i].description %></td> 
+          <td class="i"><%= productos[i].brand %></td>
+          <td class="i"><%= productos[i].size %></td>
+          <td class="i"><%= productos[i].categoria_id %></td>
+          
           <td>
           <a href="/admin/<%= productos[i].id %>/actualizar" class="add">Editar</a>
+        </td>
+        <td>
+          <a href="/admin/<%= productos[i].id %>/delete" class="add">borrar</a>
         </td>
         </tr>
       <% } %>
     </tbody>
   </table>  
-
 </body>
-

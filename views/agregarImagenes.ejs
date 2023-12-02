@@ -1,10 +1,9 @@
 <%- include('template/cabezera.ejs')  %>
-
-<form action="/admin/agregarImagenes" method="post" id="contact-form">
-  <div class="input-group">
-      <h4>form</h4>
-      <br>
-      <label for="producto_id">producto_id</label>
+<form action="/admin/agregarImagenes" method="post"id="contact-form" class="form">
+ <div class="input-group">
+        <h4>agregar</h4>
+        <br>
+        <label for="producto_id">producto_id</label>
       <input class="controls" type="text" name="producto_id" id="producto_id" required>
       <br>
       <label for="url">url</label>
@@ -12,7 +11,9 @@
       <br>
       <label for="destacado">destacado</label>
       <input class="controls" type="text" name="destacado" id="destacado" required>
-      <br>
-      <input class="g-recaptcha" type="submit" >
-      </div>
+        
+        <br>
+        <input class="g-recaptcha" type="submit" >
+    </div>
     </form>
+    
