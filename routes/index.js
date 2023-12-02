@@ -7,6 +7,9 @@ var router = express.Router();
 
 require('dotenv').config()
 
+
+
+
 router.get('/', function(req, res, next) {
   db.selectImagesAndProducts(function (productosConImagenes) {
     db.selectCategoria(function (categorias) {
@@ -383,7 +386,19 @@ router.get('/imagenes',(req,res,next)=>{
 
 
 
-
+router.get('/producto/:id',(req,res,next)=>{
+  let idImg = req.params.id
+  console.log(idImg);
+  db.selectImagesAndProducts3(idImg,function  (productosConImagenes3) {
+  db.selectImagesAndProducts2(idImg,function 
+  (productosConImagenes2)  {
+    db.selectCategoria(function (categorias) {
+      res.render('producto', { title: 'Registros del formulario',productosConImagenes3:productosConImagenes3, productosConImagenes2: productosConImagenes2, categorias: categorias });
+    });
+     });
+  })
+    
+    });
     
    
 
