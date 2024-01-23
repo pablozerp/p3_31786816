@@ -1,11 +1,6 @@
 <%- include('template/cabezera.ejs')  %>
   <body>
-  <div class="page-nav">
-      <h1 class="hhh">Mi tienda</h1>
-      <input class="buscador" type="text" name="buscador" id="buscador" placeholder="Buscar...">
-      <button id="checkout" class="button-checkout" onclick="pay()">Pagar</button>
-  </div>
-  
+    <%- include('template/header.ejs')  %>
   <br>  
   
 <!--  -->
@@ -48,7 +43,9 @@
           </a>
           <td class="i"><%= productosConImagenes[i].price %> $</td>
           <td class="i">
-            <button class="button-add" onclick="add('product-2', 300)">Agregar</button>
+            <a href="/producto/product-2" class="button-add" onclick="add('product-2', 300)">
+              Agregar
+            </a>
           </td>
           <td class="inv"><%= productosConImagenes[i].code %></td>
           <td class="inv"><%= productosConImagenes[i].description %></td>

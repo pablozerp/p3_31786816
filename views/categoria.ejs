@@ -14,7 +14,7 @@
 <br>
   <h2>Categorías</h2>
 <br>
-  <form action="/admin/agregarCategoria" method="get">
+  <form action="/admin/admin/agregarCategoria" method="get">
     <button type="submit" class="list">agregar categoria</button>
   </form>
   <br>
@@ -34,7 +34,7 @@
           <td class="i"><%= categorias[i].idCategoria %></td>
           <td class="i"><%= categorias[i].nameCategoria %></td>
           <td>
-          <a href="/admin/<%= categorias[i].idCategoria %>/actualizarCat" class="add">Editar</a>
+          <a href="/admin/admin/<%= categorias[i].idCategoria %>/actualizarCat" class="add">Editar</a>
           </td>
           <td>
           <a href="/categoria/<%= categorias[i].idCategoria %>/delete" class="add">borrar</a>

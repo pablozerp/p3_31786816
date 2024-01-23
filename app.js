@@ -5,8 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
-
+const payRouter = require('./routes/pay');
 var app = express();
 
 // view engine setup
@@ -19,9 +20,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ message: 'An unexpected error occurred', error: err.message });
+});
 
+app.use('/', indexRouter);
+app.use('/admin', adminRouter);
+app.use('/users', usersRouter);
+app.use('/pay', payRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

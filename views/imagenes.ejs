@@ -14,7 +14,7 @@
 <br>
   <h2>Imágenes</h2>
   <br>
-  <form action="/admin/agregarImagenes" method="get">
+  <form action="/admin/admin/agregarImagenes" method="get">
     <button type="submit" class="list">agregar imagen</button>
   </form>
   <table class="u">
@@ -36,7 +36,7 @@
           <td class="i"><%= imagenes[i].url %></td>
           <td class="i"><%= imagenes[i].destacado %></td>
           <td>
-            <a href="/admin/<%= imagenes[i].id %>/actualizarImg" class="add">Editar</a>
+            <a href="/admin/admin/<%= imagenes[i].id %>/actualizarImg" class="add">Editar</a>
           </td>
           <td>
             <a href="/imagenes/<%= imagenes[i].id %>/delete" class="add">borrar</a>
