@@ -37,8 +37,8 @@
 
   <!--   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
  -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LclRFApAAAAAHolO8bynkZ4ZkAo93WcNor9FqBQ"></script>
-
+  <script src="https://www.google.com/recaptcha/api.js?render=6Le-3mUpAAAAAGrcVjJLDe8Cz6JGBHhvCvbiWNZz"></script>
+  
   <script>
     document
       .getElementById("submitBtn")
@@ -46,7 +46,7 @@
         event.preventDefault();
         grecaptcha.ready(function () {
           grecaptcha
-            .execute("6LclRFApAAAAAHolO8bynkZ4ZkAo93WcNor9FqBQ", {
+            .execute("6Le-3mUpAAAAAGrcVjJLDe8Cz6JGBHhvCvbiWNZz", {
               action: "submit",
             })
             .then(function (token) {
