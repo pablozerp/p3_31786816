@@ -51,11 +51,40 @@ const selectImagen2 = (idImg, callback) => {
     });
 }
 
+const selectratings2  = ( callback) => {
+    db.all('SELECT * FROM ratings ', [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        callback(rows);
+    });
+}
+
+const selectratings  = (user_id,product_id, callback) => {
+    db.all('SELECT * FROM ratings  WHERE user_id = ? and product_id = ?', [user_id,product_id], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        callback(rows);
+    });
+}
+const selectratings3  = (product_id, callback) => {
+    db.all('SELECT AVG(rating) FROM ratings WHERE product_id = ?', [product_id], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        callback(rows[0]['AVG(rating)']);
+    });
+}
+
 module.exports = {
     select,
     selectCategoria,
     selectCategoria2,
     select2,
     selectImagen,
-    selectImagen2
+    selectImagen2,
+    selectratings,
+    selectratings2,
+    selectratings3
 }

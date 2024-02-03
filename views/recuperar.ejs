@@ -1,0 +1,35 @@
+<%- include('template/cabezera.ejs')  %>
+<body>
+    <form id="contact-form"  class="form">
+      <div class="input-group">
+        <br>
+          <h4>recuperar contraseña</h4>
+          <br>
+          <label for="contraseña">contraseña</label>
+          <br>
+        <input class="controls" type="text" name="contraseña" id="contraseña">
+        <br>
+        <input class="g-recaptcha" type="submit" >
+      </div>
+  </form>
+  
+  <script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const password = document.getElementById('contraseña').value;
+  const url = window.location.href;
+  const token = url.split('/').pop();
+  
+  fetch('/recuperation', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body:  JSON.stringify({ token, password }),
+  }).then(() => {
+    window.location.href = '/'; // Redirigir a la raíz
+  });
+});
+  </script>
+</body>
+</html>

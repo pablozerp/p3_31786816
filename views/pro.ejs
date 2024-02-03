@@ -1,0 +1,26 @@
+<%- include('template/cabezera.ejs')  %>
+<body>
+  <form  action="/pro" method="post" id="contact-form" class="form">
+    <div class="input-group">
+        <h4>email</h4>
+        <br>
+        <label for="email">email</label>
+        <br>
+      <input class="controls" type="text" name="email" id="">
+      <br>
+      <input class="g-recaptcha" type="submit" > 
+      
+</div>
+</form>
+
+<style>
+  .star {
+    color: yellow;
+    display: inline-block;
+    font-size: 50px;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  }
+</style>
+<div class="star">&#9733;</div>
+</body>
+</html>

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 const { registerUser, getUserByEmail } = require('../configuration/consultasTask3/usuario.js');
 
 const fetch = require('node-fetch');
@@ -20,7 +21,7 @@ router.post('/registro', async function (req, res) {
 
   const { username, email, password, recaptchaResponse } = req.body;
 
-  const recaptchaSecretKey = '6Le-3mUpAAAAAFpstCRZaK7Va5U2UHBplaraF1fi';
+  const recaptchaSecretKey = '6LclRFApAAAAAOPcCBRKFqgklXv0gYF6yGPXO5LB';
   const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecretKey}&response=${recaptchaResponse}`;
 
   const recaptchaVerification = await fetch(recaptchaUrl, { method: 'POST' });
@@ -41,6 +42,51 @@ router.post('/registro', async function (req, res) {
       registerUser(username, email, hash);
 
       const token = jwt.sign({ username, email }, process.env.JWT_SECRETO, { expiresIn: '1h' });
+      
+    
+    
+      
+      
+      
+
+
+      try {
+
+        emailSubmit = async () => {
+          const config = {
+              host : 'smtp.gmail.com',
+              port : 587,
+              auth : {
+                  user : process.env.USER,
+        
+                  pass : process.env.PASS
+              }
+          }
+      const mensaje = {
+        from : process.env.USER,
+        to : username,
+        subject : 'formulario programacion2',
+        text : ' bienvenido usuario: ' + username 
+      }
+      const transport = nodemailer.createTransport(config);
+      const info = await transport.sendMail(mensaje);
+      
+      console.log(info);
+      } 
+      
+      emailSubmit();
+      } catch (error) {
+      console.error(error);
+      }
+      
+
+
+
+
+
+
+
+      
       console.log(token);
       res.json({ message: 'User registered successfully', token });
     } catch (error) {

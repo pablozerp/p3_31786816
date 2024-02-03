@@ -3,12 +3,15 @@ const db = require('./configDB.js');
 const {
   selectImagesAndProducts,
   selectImagesAndProducts2,
-  selectImagesAndProducts3 } = require("./consultas/selectImagesAndProduct")
+  selectImagesAndProducts3,
+  selectImagesAndProductsRating } = require("./consultas/selectImagesAndProduct")
 
 const {
   insert,
   insertCategoria,
-  insertImagen } = require("./consultas/insert")
+  insertImagen,
+  insertRating,
+ } = require("./consultas/insert")
 
 const {
   select,
@@ -16,7 +19,10 @@ const {
   selectCategoria2,
   select2,
   selectImagen,
-  selectImagen2
+  selectImagen2,
+  selectratings,
+  selectratings2,
+  selectratings3
 } = require("./consultas/select")
 
 const {
@@ -36,6 +42,7 @@ module.exports = {
   insert,
   insertCategoria,
   insertImagen,
+  insertRating,
 
   select,
   selectCategoria,
@@ -43,10 +50,14 @@ module.exports = {
   select2,
   selectImagen,
   selectImagen2,
+  selectratings,
+  selectratings2,
+  selectratings3,
 
   selectImagesAndProducts,
   selectImagesAndProducts2,
   selectImagesAndProducts3,
+  selectImagesAndProductsRating,
 
   updateImg,
   updateCategoria,

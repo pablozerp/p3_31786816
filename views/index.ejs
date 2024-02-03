@@ -1,10 +1,64 @@
 <%- include('template/cabezera.ejs')  %>
   <body>
-    <%- include('template/header.ejs')  %>
+    
+    <%- include('template/header2.ejs')  %>
   <br>  
   
+  <style>
+   
+    .rating {
+      display: flex;
+      justify-content: space-between;
+      
+    }
+  
+    .star {
+      font-size: 32px;
+      color: #bbb;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+  
+    .checked {
+      font-size: 32px;
+      color: gold;
+    }
+    .todas{
+      font-size: 32px;
+      color: gold;
+    }
+  
+    .plana {
+      display: none;
+    }
+    
+  </style>
+
+
+
+
+
+
+
+
+
+
+
 <!--  -->
 <input id="caja" class="modo" type="button" value="cambiar modo">
+<button id="todas" >mostrar todos los productos</button>
+<form id="star-form" action="/rat" method="post">
+  <div class="rating" id="5">
+    <p>filtrar por estrellas:</p>
+    <i class="bi bi-star-fill star"></i>
+    <i class="bi bi-star-fill star"></i>
+    <i class="bi bi-star-fill star"></i>
+    <i class="bi bi-star-fill star"></i>
+    <i class="bi bi-star-fill star"></i>
+  </div>
+
+  <input type="hidden" id="selected-stars" name="selectedStars" value="0">
+</form>
 <br>
   <div class="pc" id="pc">
     <% for (var i=0; i<productosConImagenes.length; i++) { %>
@@ -13,6 +67,19 @@
       <a href="/producto/<%= productosConImagenes[i].id %>">
         <img src="<%= productosConImagenes[i].url %>" alt="<%= productosConImagenes[i].name %>"></td>
       </a>
+      <div class="rating">
+        <div class="rating">
+          <% for (var j=0; j<productosConImagenes[i].rating ; j++) { %>
+            <div class="checked">&#9733;</div>
+          <% } %>
+
+          
+          <% for (var j=Math.ceil(productosConImagenes[i].rating); j<5; j++) { %>
+            <div class="star">&#9733;</div>
+          <% } %>
+        </div>
+
+    </div>
       <h1><%= productosConImagenes[i].price %> $</h1>
       <h6><%= productosConImagenes[i].code %></h6>
       <h6><%= productosConImagenes[i].description %></h6>
@@ -59,6 +126,7 @@
 </div>
 <script src="pepe.js"></script>
 <script src="script.js"></script>
-<script src="script2.js"></script>    
+<script src="script2.js"></script>   
+<script src="estrellas.js"></script>
   </body>
 </html>

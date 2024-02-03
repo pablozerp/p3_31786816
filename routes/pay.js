@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRETO, API_KEY, API_URL } = process.env;
 const axios = require('axios');
 const ip = require('ip');
+const nodemailer = require('nodemailer');
 
 const { getUserByEmail } = require('../configuration/consultasTask3/usuario.js');
 
@@ -67,7 +68,40 @@ router.post('/', (req, res) => {
                             if (err) {
                                 console.error('Error al guardar la compra:', err);
                                 return;
-                            }
+                            }try {
+    
+    
+                               
+
+        emailSubmit = async () => {
+          const config = {
+              host : 'smtp.gmail.com',
+              port : 587,
+              auth : {
+                  user : process.env.USER,
+        
+                  pass : process.env.PASS
+              }
+          }
+          let Content1 = JSON.stringify(data.description)
+          let Content2 = JSON.stringify(data.total_pagado)
+      const mensaje = {
+        from : process.env.USER,
+        to : email,
+        subject : 'formulario programacion3',
+        text : 'acaba de comprar: '+ Content1 + 'total pagado: ' + Content2
+      }
+      const transport = nodemailer.createTransport(config);
+      const info = await transport.sendMail(mensaje);
+      
+      console.log(info);
+      } 
+      
+      emailSubmit();
+
+      } catch (error) {
+      console.error(error);
+      }
 
                             console.log('Compra guardada con ID:', lastID);
                         });

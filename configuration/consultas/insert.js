@@ -27,8 +27,18 @@ const insertImagen = (producto_id, url, destacado) => {
     });
 }
 
+const insertRating = (token, idProducto, value) => {
+    db.run('INSERT INTO ratings (user_id, product_id, rating) VALUES (?, ?, ?)', [token, idProducto, value], function (err) {
+        if (err) {
+            return console.log(err.message);
+        }
+        console.log(`A row has been inserted with rowid ${this.lastID}`);
+    });
+}
+
 module.exports = {
     insert,
     insertCategoria,
-    insertImagen
+    insertImagen,
+    insertRating
 }
