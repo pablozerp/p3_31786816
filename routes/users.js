@@ -20,8 +20,8 @@ router.get('/registro', function (req, res, next) {
 router.post('/registro', async function (req, res) {
 
   const { username, email, password, recaptchaResponse } = req.body;
-
-  const recaptchaSecretKey = '6LclRFApAAAAAOPcCBRKFqgklXv0gYF6yGPXO5LB';
+  
+  const recaptchaSecretKey = '6Le-3mUpAAAAAFpstCRZaK7Va5U2UHBplaraF1fi';
   const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecretKey}&response=${recaptchaResponse}`;
 
   const recaptchaVerification = await fetch(recaptchaUrl, { method: 'POST' });
