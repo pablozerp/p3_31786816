@@ -43,50 +43,35 @@ router.post('/registro', async function (req, res) {
 
       const token = jwt.sign({ username, email }, process.env.JWT_SECRETO, { expiresIn: '1h' });
       
+      emailSubmit = async () => {
+        const config = {
+            host : 'smtp.gmail.com',
+            port : 587,
+            auth : {
+                user : process.env.USER,
+      
+                pass : process.env.PASS
+            }
+        }
+    const mensaje = {
+      from : process.env.USER,
+      to : email,
+      subject : 'formulario programacion2',
+      text : ' bienvenido usuario: ' + email 
+    }
+    const transport = nodemailer.createTransport(config);
+    const info = await transport.sendMail(mensaje);
+    
+    console.log(info);
+    } 
+    
+    emailSubmit();
     
     
       
       
       
 
-
-      try {
-
-        emailSubmit = async () => {
-          const config = {
-              host : 'smtp.gmail.com',
-              port : 587,
-              auth : {
-                  user : process.env.USER,
-        
-                  pass : process.env.PASS
-              }
-          }
-      const mensaje = {
-        from : process.env.USER,
-        to : username,
-        subject : 'formulario programacion2',
-        text : ' bienvenido usuario: ' + username 
-      }
-      const transport = nodemailer.createTransport(config);
-      const info = await transport.sendMail(mensaje);
-      
-      console.log(info);
-      } 
-      
-      emailSubmit();
-      } catch (error) {
-      console.error(error);
-      }
-      
-
-
-
-
-
-
-
-      
       console.log(token);
       res.json({ message: 'User registered successfully', token });
     } catch (error) {
